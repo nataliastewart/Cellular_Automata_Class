@@ -1,5 +1,5 @@
 import React from "react";
-// import ReactDOM from "react-dom";
+
 import "./Main.css";
 
 class Box extends React.Component {
@@ -12,19 +12,19 @@ class Box extends React.Component {
       <div
         className={this.props.boxClass}
         id={this.props.id}
-        onCLick={this.selectBox}
-      ></div>
+        onClick={this.selectBox}
+      />
     );
   }
 }
 
 class Grid extends React.Component {
   render() {
-    const width = this.props.cols * 16;
+    const width = this.props.cols * 14;
     var rowsArr = [];
     var boxClass = "";
-    for (var i = 0; i < this.props.rows; ++i) {
-      for (var j = 0; j < this.props.rows; ++j) {
+    for (var i = 0; i < this.props.rows; i++) {
+      for (var j = 0; j < this.props.rows; j++) {
         let boxId = i + "_" + j;
 
         boxClass = this.props.gridFull[i][j] ? "box on" : "box off";
@@ -64,6 +64,33 @@ class Main extends React.Component {
         .map(() => Array(this.cols).fill(false)),
     };
   }
+
+  selectBox = (row, col) => {
+    let gridCopy = arrayClone(this.state.gridFull);
+    gridCopy[row][col] = !gridCopy[row][col];
+    this.setState({
+      gridFull: gridCopy,
+    });
+  };
+
+  radom = () => {
+    let gridCopy = arrayClone(this.state.gridFull);
+    for (let i = 0; i < this.rows; i++) {
+      for (let j = 0; j < this.cols; j++) {
+        if (Math.floor(Math.random() * 4) === 1) {
+          gridCopy[i][j] = true;
+        }
+      }
+    }
+    this.setState({
+      gridFull: gridCopy,
+    });
+  };
+
+  componentDidMount() {
+    this.radom();
+    // this.playButton();
+  }
   render() {
     return (
       /* passing variables as props to Grid component */
@@ -82,4 +109,7 @@ class Main extends React.Component {
   }
 }
 
+function arrayClone(arr) {
+  return JSON.parse(JSON.stringify(arr));
+}
 export default Main;

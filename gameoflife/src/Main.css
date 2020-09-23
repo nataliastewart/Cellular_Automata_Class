@@ -1,13 +1,5 @@
 body {
-  background-image: url(https://images.unsplash.com/photo-1571558541262-15f8cf6b0eb9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1934&q=80);
-  background-size: cover;
-  background-attachment: fixed;
-}
-
-.btn {
-  background-color: greenyellow;
-  color: black;
-  margin-left: 1rem;
+  background-image: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/squares.png);
 }
 
 .box {
@@ -20,7 +12,7 @@ body {
 }
 
 .off {
-  background-color: rgb(195, 199, 191);
+  background-color: lightgray;
 }
 
 .on {
@@ -28,10 +20,10 @@ body {
 }
 
 .box:hover {
-  background: orange;
+  background: #00ccff;
 }
 
-.controls {
+.center {
   margin: auto;
   display: table;
   margin-top: 10px;
@@ -49,7 +41,7 @@ h1,
 h2,
 h3,
 h4 {
-  color: greenyellow;
+  color: white;
   margin: auto;
   text-align: center;
   width: 50%;
@@ -57,19 +49,5 @@ h4 {
 }
 
 h4 {
-  margin-top: 1rem;
-}
-
-#rules {
-  text-align: center;
-  color: greenyellow;
-  margin: 3rem;
-  font-weight: 500;
-  margin-top: auto;
-  cursor: auto;
-}
-
-ol {
-  color: greenyellow;
-  margin-top: 2rem;
+  margin-top: 0px;
 }
