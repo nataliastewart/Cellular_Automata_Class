@@ -1,7 +1,7 @@
 import React from "react";
 import "./Main.css";
 import { ButtonToolbar, Dropdown, DropdownButton } from "react-bootstrap";
-
+import { Link } from "react-router-dom";
 class Box extends React.Component {
   selectBox = () => {
     this.props.selectBox(this.props.row, this.props.col);
@@ -58,35 +58,39 @@ class Buttons extends React.Component {
   render() {
     return (
       <div className="center">
+        <div>
+          {" "}
+          <Link to="/">Home</Link>
+        </div>
         <ButtonToolbar>
-          <button className="btn btn-default" onClick={this.props.playButton}>
+          <button className="btn" onClick={this.props.playButton}>
             Play
           </button>
-          <button className="btn btn-default" onClick={this.props.pauseButton}>
+          <button className="btn" onClick={this.props.pauseButton}>
             Pause
           </button>
-          <button className="btn btn-default" onClick={this.props.clear}>
+          <button className="btn" onClick={this.props.clear}>
             Clear
           </button>
-          <button className="btn btn-default" onClick={this.props.slow}>
+          <button className="btn" onClick={this.props.slow}>
             Slow
           </button>
-          <button className="btn btn-default" onClick={this.props.fast}>
+          <button className="btn" onClick={this.props.fast}>
             Fast
           </button>
-          <button className="btn btn-default" onClick={this.props.seed}>
-            Seed
+          <button className="btn" onClick={this.props.seed}>
+            Radom
           </button>
-          <DropdownButton
-            title="Grid Size"
-            id="size-menu"
-            onSelect={this.handleSelect}
-          >
-            <Dropdown eventKey="1">20x10</Dropdown>
-            <Dropdown eventKey="2">50x30</Dropdown>
-            <Dropdown eventKey="3">70x50</Dropdown>
-          </DropdownButton>
         </ButtonToolbar>
+        <DropdownButton
+          title="Grid Size"
+          id="size-menu"
+          onSelect={this.handleSelect}
+        >
+          <Dropdown.Item eventKey="1">20x10</Dropdown.Item>
+          <Dropdown.Item eventKey="2">50x30</Dropdown.Item>
+          <Dropdown.Item eventKey="3">70x50</Dropdown.Item>
+        </DropdownButton>
       </div>
     );
   }
@@ -138,6 +142,43 @@ class Main extends React.Component {
     clearInterval(this.intervalId);
   };
 
+  slow = () => {
+    this.speed = 1000;
+    this.playButton();
+  };
+
+  fast = () => {
+    this.speed = 100;
+    this.playButton();
+  };
+
+  clear = () => {
+    var grid = Array(this.rows)
+      .fill()
+      .map(() => Array(this.cols).fill(false));
+    this.setState({
+      gridFull: grid,
+      generation: 0,
+    });
+  };
+
+  gridSize = (size) => {
+    switch (size) {
+      case "1":
+        this.cols = 20;
+        this.rows = 10;
+        break;
+      case "2":
+        this.cols = 50;
+        this.rows = 30;
+        break;
+      default:
+        this.cols = 70;
+        this.rows = 50;
+    }
+    this.clear();
+  };
+
   play = () => {
     let g = this.state.gridFull;
     let g2 = arrayClone(this.state.gridFull);
@@ -172,14 +213,13 @@ class Main extends React.Component {
     return (
       /* passing variables as props to Grid component */
       <div>
-        <h1>Hello</h1>
         <Buttons
           playButton={this.playButton}
           pauseButton={this.pauseButton}
           slow={this.slow}
           fast={this.fast}
           clear={this.clear}
-          seed={this.seed}
+          seed={this.radom}
           gridSize={this.gridSize}
         />
 
