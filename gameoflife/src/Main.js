@@ -57,40 +57,70 @@ class Buttons extends React.Component {
 
   render() {
     return (
-      <div className="center">
-        <div className="home-link">
-          {" "}
-          <Link to="/">Home</Link>
+      <div>
+        <h2 class="flux">The Game of Life </h2>
+        <div className="wrap-content">
+          <div className="history">
+            <h3>I little bit of the history... </h3>
+
+            <p>
+              The Game of Life, also known simply as Life, is a cellular
+              automaton devised by the British mathematician John Horton Conway
+              in 1970. It is a zero-player game, meaning that its evolution is
+              determined by its initial state, requiring no further input. One
+              interacts with the Game of Life by creating an initial
+              configuration and observing how it evolves.
+            </p>
+          </div>
+          <div className="rules">
+            <h3>Rules </h3>
+
+            <p>
+              1. Any live cell with fewer than two live neighbours dies, as if
+              by underpopulation.
+              <br />
+              2. Any live cell with two or three live neighbours lives on to the
+              next generation.
+              <br />
+              3. Any live cell with more than three live neighbours dies, as if
+              by overpopulation.
+              <br />
+              4. Any dead cell with exactly three live neighbours becomes a live
+              cell, as if by reproduction.
+            </p>
+          </div>
         </div>
-        <ButtonToolbar>
-          <button className="btn" onClick={this.props.playButton}>
-            Play
-          </button>
-          <button className="btn" onClick={this.props.pauseButton}>
-            Pause
-          </button>
-          <button className="btn" onClick={this.props.clear}>
-            Clear
-          </button>
-          <button className="btn" onClick={this.props.slow}>
-            Slow
-          </button>
-          <button className="btn" onClick={this.props.fast}>
-            Fast
-          </button>
-          <button className="btn" onClick={this.props.seed}>
-            Radom
-          </button>
-        </ButtonToolbar>
-        <DropdownButton
-          title="Grid Size"
-          id="size-menu"
-          onSelect={this.handleSelect}
-        >
-          <Dropdown.Item eventKey="1">20x10</Dropdown.Item>
-          <Dropdown.Item eventKey="2">50x30</Dropdown.Item>
-          <Dropdown.Item eventKey="3">70x50</Dropdown.Item>
-        </DropdownButton>
+        <div className="center">
+          <ButtonToolbar>
+            <button className="btn" onClick={this.props.playButton}>
+              Play
+            </button>
+            <button className="btn" onClick={this.props.pauseButton}>
+              Pause
+            </button>
+            <button className="btn" onClick={this.props.clear}>
+              Clear
+            </button>
+            <button className="btn" onClick={this.props.slow}>
+              Slow
+            </button>
+            <button className="btn" onClick={this.props.fast}>
+              Fast
+            </button>
+            <button className="btn" onClick={this.props.seed}>
+              Radom
+            </button>
+          </ButtonToolbar>
+          <DropdownButton
+            title="Grid Size"
+            id="size-menu"
+            onSelect={this.handleSelect}
+          >
+            <Dropdown.Item eventKey="1">20x10</Dropdown.Item>
+            <Dropdown.Item eventKey="2">50x30</Dropdown.Item>
+            <Dropdown.Item eventKey="3">70x50</Dropdown.Item>
+          </DropdownButton>
+        </div>
       </div>
     );
   }
