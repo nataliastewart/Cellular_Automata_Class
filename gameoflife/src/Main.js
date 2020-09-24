@@ -58,7 +58,7 @@ class Buttons extends React.Component {
   render() {
     return (
       <div className="center">
-        <div>
+        <div className="home-link">
           {" "}
           <Link to="/">Home</Link>
         </div>

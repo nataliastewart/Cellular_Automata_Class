@@ -14,7 +14,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  margin-top: 1%;
+  margin-top: 4%;
 }
 
 .history {
@@ -69,6 +69,7 @@ body {
   font-size: 4vw;
   line-height: 2vw;
   text-shadow: 0 0 3vw black;
+  margin-bottom: 1%;
 }
 
 .flux {
@@ -122,8 +123,13 @@ body {
 
 .Game-logo {
   width: 25%;
+  margin-bottom: 2%;
 }
 
 .Home-link {
   text-decoration: none;
+}
+
+p {
+  margin-top: 2%;
 }

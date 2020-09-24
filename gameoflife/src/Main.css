@@ -84,3 +84,11 @@ h4 {
 h4 {
   margin-top: 0px;
 }
+
+.home-link {
+  width: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: flex-start;
+}
